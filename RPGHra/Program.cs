@@ -2,7 +2,7 @@
 
 namespace RPGHra
 {
-    internal class Program
+    class Program
     {
         static void Main(string[] args)
         {
@@ -25,11 +25,14 @@ namespace RPGHra
             int aktualniHP = 0, aktualniMana = 0, aktualniMince = 0, aktualniLevel = 1, aktualniZkusenosti = 0, aktualniUtok = 0;
 
             int volbaPostavy;
-            bool spravneZadani;
+            char potvrzeniVyberu;
+            bool spravneZadani = false, zmenaPostavy = false, potvrdit = false;
 
             Dictionary<string, string> miniBossDefinice = new Dictionary<string, string>();
             miniBossDefinice.Add(miniBoss[0], "obrovská, nezastavitelná bestie");
             miniBossDefinice.Add(miniBoss[1], "vládce démonů a černé magie");
+
+            Vypisovac vypisovac = new Vypisovac();
 
             Console.WriteLine("Vítejte ve hře");
             Console.WriteLine(" __      __                             .__                ");
@@ -38,11 +41,54 @@ namespace RPGHra
             Console.WriteLine(" \\        /  / __ \\|  | \\/\\___ \\ |  |_> >  ||  | \\/\\  ___/ ");
             Console.WriteLine("  \\__/\\  /  (____  /__|  /____  >|   __/|__||__|    \\___  >");
             Console.WriteLine("       \\/        \\/           \\/ |__|                   \\/ \n\n");
+
             Console.WriteLine("Seznam postav:");
             for (int i = 1; i < 5; i++)
             {
                 Console.WriteLine(i + " - " + postavy[i - 1]);
             }
+
+            do
+            {
+                Console.WriteLine("\nVyberte vaši postavu: ");
+                do
+                {
+                    while (!int.TryParse(Console.ReadLine(), out volbaPostavy))
+                        Console.WriteLine("Neplatné zadání, zadejte číslo vaší postavy: ");
+                    if (volbaPostavy < 1 || volbaPostavy > 4)
+                    {
+                        Console.WriteLine("Vyberte pouze čísla postav z nabídky: ");
+                        spravneZadani = false;
+                    }
+                    else
+                    {
+                        spravneZadani = true;
+                    }
+                } while (spravneZadani == false);
+
+                vypisovac.VypisPostavu(volbaPostavy, postavy, postavyMaxHP, postavyHP, maxMana, mana, mince, utok);
+                Console.WriteLine("\nChcete si zvolit tuto postavu? [P - potvrdit, Z - změnit]");
+                do
+                {
+                    while (!char.TryParse(Console.ReadLine(), out potvrzeniVyberu))
+                        Console.WriteLine("Neplatné zadání, zadejte písmeno P nebo Z: ");
+                    if (potvrzeniVyberu == 'P' || potvrzeniVyberu == 'p')
+                    {
+                        potvrdit = true;
+                        zmenaPostavy = false;
+                    }
+                    else if (potvrzeniVyberu == 'Z' || potvrzeniVyberu == 'z')
+                    {
+                        potvrdit = true;
+                        zmenaPostavy = true;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Neplatné zadání, zadejte písmeno P nebo  Z: ");
+                        potvrdit = false;
+                    }
+                } while (potvrdit != true);
+            } while (zmenaPostavy == true);
         }
     }
 }
