@@ -1,9 +1,9 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\socho\\source\\repos\\RPGHra\\",
+  "WorkspaceRootPath": "C:\\Users\\socho\\Documents\\GitHub\\C-SharpHra\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{F0A5B405-D520-47D7-B6EB-B5198F184758}|RPGHra\\RPGHra.csproj|c:\\users\\socho\\source\\repos\\rpghra\\rpghra\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{F0A5B405-D520-47D7-B6EB-B5198F184758}|RPGHra\\RPGHra.csproj|c:\\users\\socho\\documents\\github\\c-sharphra\\rpghra\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{F0A5B405-D520-47D7-B6EB-B5198F184758}|RPGHra\\RPGHra.csproj|solutionrelative:rpghra\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
@@ -20,11 +20,11 @@
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\socho\\source\\repos\\RPGHra\\RPGHra\\Program.cs",
+              "DocumentMoniker": "C:\\Users\\socho\\Documents\\GitHub\\C-SharpHra\\RPGHra\\Program.cs",
               "RelativeDocumentMoniker": "RPGHra\\Program.cs",
-              "ToolTip": "C:\\Users\\socho\\source\\repos\\RPGHra\\RPGHra\\Program.cs",
+              "ToolTip": "C:\\Users\\socho\\Documents\\GitHub\\C-SharpHra\\RPGHra\\Program.cs",
               "RelativeToolTip": "RPGHra\\Program.cs",
-              "ViewState": "AQIAADoAAAAAAAAAAAAgwFoAAAArAAAA",
+              "ViewState": "AQIAAHYAAAAAAAAAAAAiwI8AAAAtAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-08T16:20:05.368Z",
               "EditorCaption": ""

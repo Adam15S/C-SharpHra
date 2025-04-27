@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\socho\\source\\repos\\RPGHra\\RPGHra\\RPGHra.csproj": {}
+    "C:\\Users\\socho\\Documents\\GitHub\\C-SharpHra\\RPGHra\\RPGHra.csproj": {}
   },
   "projects": {
-    "C:\\Users\\socho\\source\\repos\\RPGHra\\RPGHra\\RPGHra.csproj": {
+    "C:\\Users\\socho\\Documents\\GitHub\\C-SharpHra\\RPGHra\\RPGHra.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\socho\\source\\repos\\RPGHra\\RPGHra\\RPGHra.csproj",
+        "projectUniqueName": "C:\\Users\\socho\\Documents\\GitHub\\C-SharpHra\\RPGHra\\RPGHra.csproj",
         "projectName": "RPGHra",
-        "projectPath": "C:\\Users\\socho\\source\\repos\\RPGHra\\RPGHra\\RPGHra.csproj",
+        "projectPath": "C:\\Users\\socho\\Documents\\GitHub\\C-SharpHra\\RPGHra\\RPGHra.csproj",
         "packagesPath": "C:\\Users\\socho\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\socho\\source\\repos\\RPGHra\\RPGHra\\obj\\",
+        "outputPath": "C:\\Users\\socho\\Documents\\GitHub\\C-SharpHra\\RPGHra\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

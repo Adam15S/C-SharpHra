@@ -89,6 +89,59 @@ namespace RPGHra
                     }
                 } while (potvrdit != true);
             } while (zmenaPostavy == true);
+
+            Console.Write("\nNačítání");
+            for (int i = 0; i < 5; i++)
+            {
+                Console.Write(".");
+                Thread.Sleep(1000);
+            }
+
+            Console.Clear();
+            Console.WriteLine("Ve stínu hor stojí Warspire — vesnice na pokraji zkázy.");
+            Thread.Sleep(4000);
+            Console.WriteLine("Staré legendy ožívají a temnota se blíží.");
+            Thread.Sleep(3000);
+            Console.WriteLine("Jsi poslední nadějí porazit nepřítele.");
+            Thread.Sleep(3000);
+            Console.WriteLine("Tvá cesta na záchranu vesnice Warspire začíná...");
+            Console.WriteLine("\n[Stiskněte libovolnou klávesu pro pokračování.]");
+            Console.ReadLine();
+
+            Console.Clear();
+            Console.WriteLine("Tvoje cesta začíná v tvé rodné vesnici — Grimharrow.");
+            Thread.Sleep(4000);
+            Console.WriteLine("Zde jsi momenálně v bezpečí, ale ne nadlouho.");
+            Thread.Sleep(3000);
+            Console.WriteLine("Vesnice jsou místem, kde můžeš vylepšit své schopnosti.");
+            Thread.Sleep(3000);
+            Console.WriteLine("Warspire tě ale čeká, tak nezahálej dlouho!");
+            Console.WriteLine("\n[Možnosti vesnice:]");
+            Console.WriteLine("[-----------------]");
+            Console.ForegroundColor = ConsoleColor.DarkGray;
+            Console.WriteLine("[1 - Doplnit životy (dostupné po prvním boji)]");
+            Console.ResetColor();
+            Console.WriteLine("[2 - Vylepšit maximální životy]");
+            Console.WriteLine("[3 - Vylepšit maximální manu]");
+            Console.WriteLine("[4 - Doplnit životy]");
+            do
+                {
+                while (!int.TryParse(Console.ReadLine(), out volbaPostavy))
+                    Console.WriteLine("Neplatné zadání, zadejte číslo dle výběru: ");
+                if (volbaPostavy < 1 || volbaPostavy > 4)
+                {
+                    Console.WriteLine("Vyberte pouze čísla postav z nabídky: ");
+                    spravneZadani = false;
+                }
+                if (volbaPostavy == 1)
+                {
+                    Console.WriteLine("První volba není dostupná, vyberte jinou:");
+                }
+                else
+                {
+                    spravneZadani = true;
+                }
+            } while (spravneZadani == false);
         }
     }
 }
