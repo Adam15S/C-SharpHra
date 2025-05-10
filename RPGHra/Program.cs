@@ -1,4 +1,5 @@
-﻿using System.Runtime.InteropServices;
+﻿using System.Diagnostics.Metrics;
+using System.Runtime.InteropServices;
 
 namespace RPGHra
 {
@@ -6,7 +7,23 @@ namespace RPGHra
     {
         static void Main(string[] args)
         {
-            string[] monstra = { "kostlivec", "zombík", "upír", "vlkodlak", "ghúl", "drak", "goblin", "troll", "skřet", "harpyje", "bazilišek", "nemrtvý mág", "duch", "chiméra", "démon", "ohnivý elementál" };
+            string[] monstra = { "Kostlivec", "Zombík", "Upír", "Vlkodlak", "Ghúl", "Drak", "Goblin", "Troll", "Skřet", "Harpyje", "Bazilišek", "Nemrtvý mág", "Duch", "Chiméra", "´Démon", "Ohnivý elementál" };
+            string[] monstraObrazek = { "  .-\"      \"-.\r\n /            \\\r\n|              |\r\n|,  .-.  .-.  ,|\r\n| )(_o/  \\o_)( |\r\n|/     /\\     \\|\r\n(_     ^^     _)\r\n \\__|IIIIII|__/\r\n  | \\IIIIII/ |\r\n  \\          /\r\n   `--------`",
+            "  .-\"\"\"-.\r\n / -   - \\\r\n|  o _ o  |\r\n|   (_)   |\r\n \\  '='  /\r\n /`-----'\\\r\n/         \\\r\n|         |\r\n\\___)  (___/\r\n",
+            "  /^\\\r\n /   \\\r\n| () () |\r\n \\  ^  /\r\n  |||||\r\n  |||||\r\n /_| |_\\\r\n(  U U  )",
+            "  /^ ^\\\r\n / 0 0 \\\r\n V\\ Y /V\r\n  / - \\\r\n |    \\\r\n || (__\\",
+            "   .-\"      \"-.\r\n  /            \\\r\n |  .----.----. |\r\n | |  ()  () | |\r\n |  \\   ^^   /  |\r\n  \\  '--''--'  /\r\n   '-.______.–'\r\n    /  ||||  \\\r\n   (_/      \\_)",
+            "           __====-_  _-====___\r\n   _--^^^#####//      \\\\#####^^^--_\r\n _-^##########// (    ) \\\\##########^-_\r\n-############//  |\\^^/|  \\\\############-\r\n_/###########((   |||||   ))###########\\_\r\n/#############\\\\  |||||  //#############\\\r\n-###############\\\\ ||| //###############-\r\n  -##############\\\\/^\\\\/##############-\r\n   -#############/// \\\\\\#############-\r\n     ^^^^^^^^^^^^     ^^^^^^^^^^^^",
+            "   ___\r\n  /   \\\r\n |     |\r\n | o o |  \r\n |  ^  | \r\n | '-' |\r\n  \\___/ \r\n   | | |\r\n   | | |\r\n  /   \\ \r\n /     \\",
+            "    _____\r\n   /     \\\r\n  /  o o  \\\r\n /    ^    \\\r\n|    ===    |\r\n|   /   \\   |\r\n \\_________/\r\n   /  |  \\\r\n  /   |   \\\r\n /    |    \\\r\n/_____|_____\\",
+            "       ,      ,\r\n      /(.-\"\"-.)\\\r\n  |\\  \\/      \\/  /|\r\n  | \\ / =.  .= \\ / |\r\n  \\( \\   o\\/o   / )/\r\n   \\_, '-/  \\-' ,_/\r\n     /   \\__/   \\\r\n     \\ \\__/\\__/ /\r\n   ___\\ \\|--|/ /___\r\n /`    \\      /    `\\\r\n/       '----'       \\",
+            "        ,     ,\r\n       (\\____/)\r\n        (_oo_)\r\n  .-.__/      \\___.-.\r\n (   |  |\\/\\/|  |   )\r\n  \\__/  ||  ||  \\__/\r\n    |   ||  ||   |\r\n    \\  _||_ ||_  /\r\n     \\____)|(___/\r\n     /    /  \\   \\\r\n    (_/\\/     \\/\\/)\r\n     /           \\",
+            "           /^\\/^\\\r\n         _|__|  O|\r\n\\/     /~     \\_/ \\\r\n \\____|__________/  \\\r\n        \\_______      \\\r\n                `\\     \\                 \\\r\n                  |     |                  \\\r\n                 /      /                    \\\r\n                /     /                       \\\\\r\n              /      /                         \\ \\\r\n             /     /                            \\  \\\r\n           /     /             _----_            \\   \\\r\n          /     /           _-~      ~-_         |   |\r\n         (      (        _-~    _--_    ~-_     _/   |\r\n          \\      ~-____-~    _-~    ~-_    ~-_-~    /\r\n            ~-_           _-~          ~-_       _-~\r\n               ~--______-~                ~-___-~",
+            "           _____\r\n         /      \\ \r\n        |  () () | \r\n         \\   ^   / \r\n          ||||| |\r\n        __|||||_|__\r\n      /   /     \\   \\\r\n     /___|       |___\\\r\n      |  |       |  |\r\n      |  |_______|  |\r\n     /__/       \\__\\\r\n    /  /|       |\\  \\\r\n   /__/ |_______| \\__\\\r\n       (__)   (__)",
+            "        .------.\r\n      .'        `.\r\n     /     __     \\\r\n    |    .'__`.    |\r\n    |   /::::::\\   |\r\n    |   \\::::::/   |\r\n    |    `'--'`    |\r\n    |             ||\r\n    |   _______   ||\r\n    |  /       \\  ||\r\n    | |         | ||\r\n    | |         | ||\r\n    |_|_________|_||\r\n   /_|_|_|_|_|_|_|_\\\r\n     ||         ||\r\n     ||         ||\r\n     ()         ()",
+            "           ___====-_  _-====___\r\n       _--^^^#####//      \\\\#####^^^--_\r\n    _-^##########// (    ) \\\\##########^-_\r\n   -############//  |\\^^/|  \\\\############-\r\n _/############//   (@::@)   \\\\############\\_\r\n/#############((     \\\\//     ))#############\\\r\n-###############\\\\    (oo)    //###############-\r\n-#################\\\\  / U \\  //#################-\r\n-###################\\\\/  ^  \\//###################-\r\n_#/|##########/\\######(  (_)  )######/\\##########|\\#_\r\n |/ |#/\\#/\\#/\\/  \\#/\\##\\  |  |  /##/\\#/  \\/\\#/\\#/\\#| \\|\r\n `  |/  V  V  `   V  \\#\\| |  | |/#/  V   '  V  V  \\|  '\r\n    `   `  `      `   / | |  | | \\   '      '  '   '\r\n                     (  | |  | |  )\r\n                    __\\ | |  | | /__\r\n                   (vvv(VVV)(VVV)vvv)",
+            "           / \\  //\\\r\n     |\\___/|      \\\r\n     /0  0  \\      |\r\n    (    ^   )     |\r\n     \\__=__/     / |\r\n      /     \\   |  |\r\n     |     |   /  /\r\n    /| | | |\\_/  /\r\n   /_|_|_|_|/  /\r\n  /__|_|_|_|  (\r\n /_/        \\  \\\r\n(_|  |___|  |_) \\\r\n   \\_______/    )\r\n    |_||_|     /\r\n   (___||___)='\r\n     |  ||  |\r\n     |  ||  |\r\n    (__)(__)",
+            "       (     )\r\n      (       )\r\n     (         )      )  )\r\n      |       |     (  (  (\r\n      |       |     )  )  )\r\n     /|  .-.  |\\   (  (  (\r\n    / | (   ) | \\   )  )  )\r\n   /  |  '-'  |  \\  (  (  (\r\n  /   |       |   \\  )  )  )\r\n /    |       |    \\ (  (  (\r\n/     |       |     )  )  )\r\n      /       \\\r\n     /         \\\r\n    (___________)\r\n        |  |\r\n        |  |\r\n        |  |\r\n       /    \\\r\n      (      )\r\n       `----'"};
             int[] monstraHP = { 40, 35, 50, 30, 45, 65, 35, 70, 40, 50, 55, 45, 35, 55, 45, 60 };
             int[] monstraDMG = { 9, 8, 13, 10, 11, 12, 9, 7, 8, 10, 14, 12, 11, 12, 13, 12 };
             string[] miniBoss = { "behemot", "archidémon" };
@@ -24,9 +41,9 @@ namespace RPGHra
 
             int aktualniHP = 0, aktualniMana = 0, aktualniMince = 0, aktualniLevel = 1, aktualniZkusenosti = 0, aktualniUtok = 0;
 
-            int volbaPostavy, vesniceVyber;
+            int volbaPostavy, vesniceVyber, vylosovaneMonstrum;
             char potvrzeniVyberu;
-            bool spravneZadani = false, zmenaPostavy = false, potvrdit = false;
+            bool spravneZadani = false, zmenaPostavy = false, potvrdit = false, znovu = true;
 
             Dictionary<string, string> miniBossDefinice = new Dictionary<string, string>();
             miniBossDefinice.Add(miniBoss[0], "obrovská, nezastavitelná bestie");
@@ -34,6 +51,7 @@ namespace RPGHra
 
             Vypisovac vypisovac = new Vypisovac();
             Vesnice vesnice = new Vesnice();
+            Losovac losovac = new Losovac();
 
             Console.WriteLine("Vítejte ve hře");
             Console.WriteLine(" __      __                             .__                ");
@@ -121,104 +139,135 @@ namespace RPGHra
             Console.WriteLine("Vesnice jsou místem, kde můžeš vylepšit své schopnosti.");
             Thread.Sleep(3000);
             Console.WriteLine("Warspire tě ale čeká, tak nezahálej dlouho!");
-            Console.WriteLine("\n[Možnosti vesnice:]");
-            Console.WriteLine("[-----------------]");
-            Console.ForegroundColor = ConsoleColor.DarkGray;
-            Console.WriteLine("[1 - Doplnit životy (dostupné po prvním boji)]");
-            Console.ResetColor();
-            Console.WriteLine("[2 - Vylepšit maximální životy]");
-            Console.WriteLine("[3 - Vylepšit maximální manu]");
-            Console.WriteLine("[4 - Vylepšit útok]");
-            do
-                {
-                while (!int.TryParse(Console.ReadLine(), out vesniceVyber))
-                    Console.WriteLine("Neplatné zadání, zadejte číslo dle výběru: ");
-                if (vesniceVyber < 1 || vesniceVyber > 4)
-                {
-                    Console.WriteLine("Vyberte pouze čísla postav z nabídky: ");
-                    spravneZadani = false;
-                }
-                if (vesniceVyber == 1)
-                {
-                    Console.WriteLine("První volba není dostupná, vyberte jinou:");
-                    spravneZadani = false;
-                }
-                else
-                {
-                    spravneZadani = true;
-                }
-            } while (spravneZadani == false);
 
-            switch (vesniceVyber)
+            do
             {
-                case 2:
-                    do
+                Console.WriteLine("\n[Možnosti vesnice:]");
+                Console.WriteLine("[-----------------]");
+                Console.ForegroundColor = ConsoleColor.DarkGray;
+                Console.WriteLine("[1 - Doplnit životy (dostupné po prvním boji)]");
+                Console.ResetColor();
+                Console.WriteLine("[2 - Vylepšit maximální životy]");
+                Console.WriteLine("[3 - Vylepšit maximální manu]");
+                Console.WriteLine("[4 - Vylepšit útok]");
+                Console.WriteLine("[5 - Opustit vesnici]");
+                do
+                {
+                    while (!int.TryParse(Console.ReadLine(), out vesniceVyber))
+                        Console.WriteLine("Neplatné zadání, zadejte číslo dle výběru: ");
+                    if (vesniceVyber < 1 || vesniceVyber > 4)
                     {
-                        Console.WriteLine("Vylepšení maximálních životů vás bude stát 20 mincí a bude vylepšeno o 5 HP. Chcete pokračovat? [A/N]");
-                        while (!char.TryParse(Console.ReadLine(), out potvrzeniVyberu))
-                            Console.WriteLine("Neplatné zadání, zadejte číslo dle výběru: ");
-                        if (potvrzeniVyberu == 'A' || potvrzeniVyberu == 'N' || potvrzeniVyberu == 'a' || potvrzeniVyberu == 'n')
-                        {
-                            spravneZadani = true;
-                        }
-                        else
-                        {
-                            Console.WriteLine("Zadejte písmeno A nebo N pro pokračování:");
-                            spravneZadani = false;
-                        }
-                    } while (spravneZadani == false);
-                    if (potvrzeniVyberu == 'N' || potvrzeniVyberu == 'n')
-                    {
-                        break;
+                        Console.WriteLine("Vyberte pouze čísla postav z nabídky: ");
+                        spravneZadani = false;
                     }
-                    vesnice.VylepsitZivoty(postavyMaxHP, aktualniMince, volbaPostavy);
-                break;
-                case 3:
-                    do
+                    if (vesniceVyber == 1)
                     {
-                        Console.WriteLine("Vylepšení maximální many vás bude stát 30 mincí a bude vylepšena o 5. Chcete pokračovat? [A/N]");
-                        while (!char.TryParse(Console.ReadLine(), out potvrzeniVyberu))
-                            Console.WriteLine("Neplatné zadání, zadejte číslo dle výběru: ");
-                        if (potvrzeniVyberu == 'A' || potvrzeniVyberu == 'N' || potvrzeniVyberu == 'a' || potvrzeniVyberu == 'n')
-                        {
-                            spravneZadani = true;
-                        }
-                        else
-                        {
-                            Console.WriteLine("Zadejte písmeno A nebo N pro pokračování:");
-                            spravneZadani = false;
-                        }
-                    } while (spravneZadani == false);
-                    if (potvrzeniVyberu == 'N' || potvrzeniVyberu == 'n')
-                    {
-                        break;
+                        Console.WriteLine("První volba není dostupná, vyberte jinou:");
+                        spravneZadani = false;
                     }
-                    vesnice.VylepsitManu(maxMana, aktualniHP, aktualniMince, volbaPostavy);
-                break;
-                case 4:
-                    do
+                    else
                     {
-                        Console.WriteLine("Vylepšení útoku vás bude stát 35 mincí a bude vylepšena o 10 DMG. Chcete pokračovat? [A/N]");
-                        while (!char.TryParse(Console.ReadLine(), out potvrzeniVyberu))
-                            Console.WriteLine("Neplatné zadání, zadejte číslo dle výběru: ");
-                        if (potvrzeniVyberu == 'A' || potvrzeniVyberu == 'N' || potvrzeniVyberu == 'a' || potvrzeniVyberu == 'n')
-                        {
-                            spravneZadani = true;
-                        }
-                        else
-                        {
-                            Console.WriteLine("Zadejte písmeno A nebo N pro pokračování:");
-                            spravneZadani = false;
-                        }
-                    } while (spravneZadani == false);
-                    if (potvrzeniVyberu == 'N' || potvrzeniVyberu == 'n')
-                    {
-                        break;
+                        spravneZadani = true;
                     }
-                    vesnice.VylepsitUtok(utok, aktualniMince, volbaPostavy);
-                break;
-            }
-            
+                } while (spravneZadani == false);
+
+                znovu = true;
+
+                switch (vesniceVyber)
+                {
+                    case 2:
+                        do
+                        {
+                            Console.WriteLine("Vylepšení maximálních životů vás bude stát 20 mincí a bude vylepšeno o 5 HP. Chcete pokračovat? [A/N]");
+                            while (!char.TryParse(Console.ReadLine(), out potvrzeniVyberu))
+                                Console.WriteLine("Neplatné zadání, zadejte číslo dle výběru: ");
+                            if (potvrzeniVyberu == 'A' || potvrzeniVyberu == 'N' || potvrzeniVyberu == 'a' || potvrzeniVyberu == 'n')
+                            {
+                                spravneZadani = true;
+                            }
+                            else
+                            {
+                                Console.WriteLine("Zadejte písmeno A nebo N pro pokračování:");
+                                spravneZadani = false;
+                            }
+                        } while (spravneZadani == false);
+                        if (potvrzeniVyberu == 'N' || potvrzeniVyberu == 'n')
+                        {
+                            break;
+                        }
+                        vesnice.VylepsitZivoty(ref postavyMaxHP, ref aktualniMince, volbaPostavy, ref znovu);
+                        break;
+                    case 3:
+                        do
+                        {
+                            Console.WriteLine("Vylepšení maximální many vás bude stát 30 mincí a bude vylepšeno o 5. Chcete pokračovat? [A/N]");
+                            while (!char.TryParse(Console.ReadLine(), out potvrzeniVyberu))
+                                Console.WriteLine("Neplatné zadání, zadejte číslo dle výběru: ");
+                            if (potvrzeniVyberu == 'A' || potvrzeniVyberu == 'N' || potvrzeniVyberu == 'a' || potvrzeniVyberu == 'n')
+                            {
+                                spravneZadani = true;
+                            }
+                            else
+                            {
+                                Console.WriteLine("Zadejte písmeno A nebo N pro pokračování:");
+                                spravneZadani = false;
+                            }
+                        } while (spravneZadani == false);
+                        if (potvrzeniVyberu == 'N' || potvrzeniVyberu == 'n')
+                        {
+                            break;
+                        }
+                        vesnice.VylepsitManu(ref maxMana, ref aktualniHP, ref aktualniMince, volbaPostavy, ref znovu);
+                        break;
+                    case 4:
+                        do
+                        {
+                            Console.WriteLine("Vylepšení útoku vás bude stát 35 mincí a bude vylepšeno o 10 DMG. Chcete pokračovat? [A/N]");
+                            while (!char.TryParse(Console.ReadLine(), out potvrzeniVyberu))
+                                Console.WriteLine("Neplatné zadání, zadejte číslo dle výběru: ");
+                            if (potvrzeniVyberu == 'A' || potvrzeniVyberu == 'N' || potvrzeniVyberu == 'a' || potvrzeniVyberu == 'n')
+                            {
+                                spravneZadani = true;
+                            }
+                            else
+                            {
+                                Console.WriteLine("Zadejte písmeno A nebo N pro pokračování:");
+                                spravneZadani = false;
+                            }
+                        } while (spravneZadani == false);
+                        if (potvrzeniVyberu == 'N' || potvrzeniVyberu == 'n')
+                        {
+                            break;
+                        }
+                        vesnice.VylepsitUtok(ref utok, ref aktualniMince, volbaPostavy, ref znovu);
+                        break;
+                    case 5:
+                        znovu = false;
+                        break;
+                    default:
+                        znovu = true;
+                        break;
+                }
+            } while (znovu == true);
+
+            vylosovaneMonstrum = losovac.VylosovatMonstrum();
+
+            Console.Clear();
+            Console.WriteLine("S prvním světlem opouštíš Grimharrow.");
+            Thread.Sleep(2000);
+            Console.WriteLine("Cesty jsou tiché, až příliš.");
+            Thread.Sleep(2000);
+            Console.WriteLine("Jen pár kroků za starou hranicí narazíš na to, co místní jen šeptem nazývali...");
+            Thread.Sleep(4000);
+            Console.WriteLine(monstraObrazek[vylosovaneMonstrum]);
+            Console.WriteLine(monstra[vylosovaneMonstrum] + ".");
+            Thread.Sleep(2000);
+            Console.WriteLine("Je to tvůj první boj.");
+            Thread.Sleep(2000);
+            Console.WriteLine("Jsi připraven?");
+            Console.WriteLine("\n[Stiskněte klávesu ENTER pro pokračování.]");
+            Console.ReadLine();
+
             /***
             {
                 case 1:

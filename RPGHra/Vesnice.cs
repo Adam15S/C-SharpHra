@@ -8,13 +8,14 @@ namespace RPGHra
 {
     class Vesnice
     {
-        public void DoplnitZivoty(int aktualniZivoty, int[] maxZivoty, int aktualniMince, int postava)
+        public void DoplnitZivoty(ref int aktualniZivoty, int[] maxZivoty, ref int aktualniMince, int postava, ref bool opakovat)
         {
             if (aktualniMince < 20)
             {
                 Console.WriteLine("Chtěli jste se nechat ošetřit, ale zapomněli jste že nemáte dostatek mincí a místní lékař vás vyhnal z vesnice.");
                 Thread.Sleep(3000);
                 Console.WriteLine("Musíte proto pokračovat dále.");
+                opakovat = false;
                 Console.WriteLine("\n[Stiskněte klávesu ENTER pro pokračování.]");
                 Console.ReadLine();
             } else if (aktualniZivoty == maxZivoty[postava - 1] - 1)
@@ -40,7 +41,7 @@ namespace RPGHra
             }
         }
 
-        public void VylepsitZivoty(int[] maxZivoty, int aktualniMince, int postava)
+        public void VylepsitZivoty(ref int[] maxZivoty, ref int aktualniMince, int postava, ref bool opakovat)
         {
             if (aktualniMince < 20)
             {
@@ -49,6 +50,7 @@ namespace RPGHra
                 Console.WriteLine("Místní farmáři vás chytili, omráčili, ovoce vám sebrali a vyvezli vás z vesnice.");
                 Thread.Sleep(3000);
                 Console.WriteLine("Musíte proto pokračovat dále.");
+                opakovat = false;
                 Console.WriteLine("\n[Stiskněte klávesu ENTER pro pokračování.]");
                 Console.ReadLine();
             }
@@ -65,7 +67,7 @@ namespace RPGHra
             }
         }
 
-        public void VylepsitManu(int[] maxMana, int aktualniHP, int aktualniMince, int postava)
+        public void VylepsitManu(ref int[] maxMana, ref int aktualniHP, ref int aktualniMince, int postava, ref bool opakovat)
         {
             if (aktualniMince < 30)
             {
@@ -75,6 +77,7 @@ namespace RPGHra
                 aktualniHP -= 5;
                 Thread.Sleep(3000);
                 Console.WriteLine("Musíte proto pokračovat dále.");
+                opakovat = false;
                 Console.WriteLine("\n[Stiskněte klávesu ENTER pro pokračování.]");
                 Console.ReadLine();
             }
@@ -91,13 +94,14 @@ namespace RPGHra
             }
         }
 
-        public void VylepsitUtok(int[] utok, int aktualniMince, int postava)
+        public void VylepsitUtok(ref int[] utok, ref int aktualniMince, int postava, ref bool opakovat)
         {
             if (aktualniMince < 35)
             {
                 Console.WriteLine("Trenér vás chtěl učit ale vy jste neměl čím zaplatit a tak vás vyhnal z města.");
                 Thread.Sleep(2000);
                 Console.WriteLine("Musíte proto pokračovat dále.");
+                opakovat = false;
                 Console.WriteLine("\n[Stiskněte klávesu ENTER pro pokračování.]");
                 Console.ReadLine();
             }
