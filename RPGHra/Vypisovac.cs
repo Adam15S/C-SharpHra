@@ -22,22 +22,22 @@ namespace RPGHra
             Console.WriteLine("Level na začátku: 1");
             Console.WriteLine("Zkušenosti na začátku: 0");
             Console.WriteLine("Útok: " + utok[cisloPostavy]);
-            Console.Write("Schopnosti: Útok = " + utok[cisloPostavy] + "; Oživení: +10 HP, cena: 1 mana; Speciální útok: ");
+            Console.Write("Schopnosti: Útok = " + utok[cisloPostavy] + "; Oživení: +10 HP, cena: 4 many; Speciální útok: ");
             if (cisloPostavy == 0)
             {
-                Console.WriteLine("Dodatačné poškození všem nepřátelům 10 HP, trvání: následující 1 kolo, cena: 2 many");
+                Console.WriteLine("Dodatačné poškození všem nepřátelům 10 HP, trvání: následující 1 kolo, cena: 8 man");
             }
             if (cisloPostavy == 1)
             {
-                Console.WriteLine("Oslabení útoku nejsilnějšího nepřátele o 5 DMG, trvání: následující 3 kola, cena: 2 many");
+                Console.WriteLine("Oslabení útoku nejsilnějšího nepřátele o 5 DMG, trvání: následující 3 kola, cena: 8 man");
             }
             if (cisloPostavy == 2)
             {
-                Console.WriteLine("Pohlcení 10 DMG z útoků od všech nepřátel, trvání: 2 kola, cena: 3 many");
+                Console.WriteLine("Pohlcení 10 DMG z útoků od všech nepřátel, trvání: 2 kola, cena: 12 man");
             }
             if (cisloPostavy == 3)
             {
-                Console.WriteLine("Oživení +25 HP, cena: 2 many");
+                Console.WriteLine("Oživení +25 HP, cena: 8 man");
             }
         }
     }

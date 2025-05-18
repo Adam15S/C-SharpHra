@@ -3,6 +3,14 @@
   "WorkspaceRootPath": "C:\\Users\\socho\\Documents\\GitHub\\C-SharpHra\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{F0A5B405-D520-47D7-B6EB-B5198F184758}|RPGHra\\RPGHra.csproj|c:\\users\\socho\\documents\\github\\c-sharphra\\rpghra\\boj.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F0A5B405-D520-47D7-B6EB-B5198F184758}|RPGHra\\RPGHra.csproj|solutionrelative:rpghra\\boj.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F0A5B405-D520-47D7-B6EB-B5198F184758}|RPGHra\\RPGHra.csproj|c:\\users\\socho\\documents\\github\\c-sharphra\\rpghra\\vypisovac.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F0A5B405-D520-47D7-B6EB-B5198F184758}|RPGHra\\RPGHra.csproj|solutionrelative:rpghra\\vypisovac.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{F0A5B405-D520-47D7-B6EB-B5198F184758}|RPGHra\\RPGHra.csproj|c:\\users\\socho\\documents\\github\\c-sharphra\\rpghra\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{F0A5B405-D520-47D7-B6EB-B5198F184758}|RPGHra\\RPGHra.csproj|solutionrelative:rpghra\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -22,17 +30,17 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\socho\\Documents\\GitHub\\C-SharpHra\\RPGHra\\Program.cs",
               "RelativeDocumentMoniker": "RPGHra\\Program.cs",
               "ToolTip": "C:\\Users\\socho\\Documents\\GitHub\\C-SharpHra\\RPGHra\\Program.cs",
               "RelativeToolTip": "RPGHra\\Program.cs",
-              "ViewState": "AQIAAOwAAAAAAAAAAAAAAA8BAAANAAAA",
+              "ViewState": "AQIAAAoAAAAAAAAAAAAgwAwBAAAfAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-08T16:20:05.368Z",
               "IsPinned": true,
@@ -40,20 +48,47 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Boj.cs",
+              "DocumentMoniker": "C:\\Users\\socho\\Documents\\GitHub\\C-SharpHra\\RPGHra\\Boj.cs",
+              "RelativeDocumentMoniker": "RPGHra\\Boj.cs",
+              "ToolTip": "C:\\Users\\socho\\Documents\\GitHub\\C-SharpHra\\RPGHra\\Boj.cs",
+              "RelativeToolTip": "RPGHra\\Boj.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-18T18:00:17.225Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "Vypisovac.cs",
+              "DocumentMoniker": "C:\\Users\\socho\\Documents\\GitHub\\C-SharpHra\\RPGHra\\Vypisovac.cs",
+              "RelativeDocumentMoniker": "RPGHra\\Vypisovac.cs",
+              "ToolTip": "C:\\Users\\socho\\Documents\\GitHub\\C-SharpHra\\RPGHra\\Vypisovac.cs",
+              "RelativeToolTip": "RPGHra\\Vypisovac.cs",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAAACcAAABBAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-18T18:12:12.169Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "Vesnice.cs",
               "DocumentMoniker": "C:\\Users\\socho\\Documents\\GitHub\\C-SharpHra\\RPGHra\\Vesnice.cs",
               "RelativeDocumentMoniker": "RPGHra\\Vesnice.cs",
               "ToolTip": "C:\\Users\\socho\\Documents\\GitHub\\C-SharpHra\\RPGHra\\Vesnice.cs",
               "RelativeToolTip": "RPGHra\\Vesnice.cs",
-              "ViewState": "AQIAAC0AAAAAAAAAAAAowGAAAABZAAAA",
+              "ViewState": "AQIAADwAAAAAAAAAAAAowGAAAABZAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-10T09:34:59.404Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
               "Title": "Losovac.cs",
               "DocumentMoniker": "C:\\Users\\socho\\Documents\\GitHub\\C-SharpHra\\RPGHra\\Losovac.cs",
               "RelativeDocumentMoniker": "RPGHra\\Losovac.cs",

@@ -267,6 +267,7 @@ namespace RPGHra
             Console.WriteLine("Jsi připraven?");
             Console.WriteLine("\n[Stiskněte klávesu ENTER pro pokračování.]");
             Console.ReadLine();
+            Console.Clear();
 
             /***
             {
