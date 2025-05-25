@@ -52,6 +52,7 @@ namespace RPGHra
             Vypisovac vypisovac = new Vypisovac();
             Vesnice vesnice = new Vesnice();
             Losovac losovac = new Losovac();
+            Boj boj = new Boj();
 
             Console.WriteLine("Vítejte ve hře");
             Console.WriteLine(" __      __                             .__                ");
@@ -268,6 +269,8 @@ namespace RPGHra
             Console.WriteLine("\n[Stiskněte klávesu ENTER pro pokračování.]");
             Console.ReadLine();
             Console.Clear();
+            boj.BojujSMonstrem();
+
 
             /***
             {
