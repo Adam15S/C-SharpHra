@@ -269,7 +269,7 @@ namespace RPGHra
             Console.WriteLine("\n[Stiskněte klávesu ENTER pro pokračování.]");
             Console.ReadLine();
             Console.Clear();
-            boj.BojujSMonstrem();
+            boj.BojujSMonstrem(1);
 
 
             /***
