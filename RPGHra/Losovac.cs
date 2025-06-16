@@ -14,5 +14,10 @@ namespace RPGHra
         {
             return randomCislo.Next(15);
         }
+
+        public int VylosovatInfekci()
+        {
+            return randomCislo.Next(3) + 1;
+        }
     }
 }

@@ -39,7 +39,7 @@ namespace RPGHra
             string boss = "Plaguevile";
             int bossHP = 90, bossDMG = 20;
 
-            int aktualniHP = 0, aktualniMana = 0, aktualniMince = 0, aktualniLevel = 1, aktualniZkusenosti = 0, aktualniUtok = 0;
+            int aktualniHP = 0, aktualniMana = 0, aktualniMince = 0, aktualniLevel = 1, aktualniZkusenosti = 0, aktualniUtok = 0, vynechaniMonstra = -1;
 
             int volbaPostavy, vesniceVyber, vylosovaneMonstrum;
             char potvrzeniVyberu;
@@ -269,35 +269,517 @@ namespace RPGHra
             Console.WriteLine("\n[Stiskněte klávesu ENTER pro pokračování.]");
             Console.ReadLine();
             Console.Clear();
-            boj.BojujSMonstrem(1);
+            boj.BojujSMonstrem(1, utok[volbaPostavy - 1], ref monstraHP[vylosovaneMonstrum], ref vynechaniMonstra, ref vynechaniMonstra, postavy[volbaPostavy - 1], volbaPostavy, ref aktualniMana, ref aktualniHP, monstraDMG[vylosovaneMonstrum]);
 
+            vylosovaneMonstrum = losovac.VylosovatMonstrum();
 
-            /***
+            Console.Clear();
+            Console.WriteLine("Jako hrdina pokračuješ dále.");
+            Thread.Sleep(1000);
+            Console.WriteLine("Ne však na dlouho, brzy totiž narazíš na další monstrum...");
+            Thread.Sleep(3000);
+            Console.WriteLine(monstraObrazek[vylosovaneMonstrum]);
+            Console.WriteLine(monstra[vylosovaneMonstrum] + ".");
+            Thread.Sleep(2000);
+            Console.WriteLine("Jsi připraven na svůj další boj?");
+            Console.WriteLine("\n[Stiskněte klávesu ENTER pro pokračování.]");
+            Console.ReadLine();
+            Console.Clear();
+            boj.BojujSMonstrem(1, utok[volbaPostavy - 1], ref monstraHP[vylosovaneMonstrum], ref vynechaniMonstra, ref vynechaniMonstra, postavy[volbaPostavy - 1], volbaPostavy, ref aktualniMana, ref aktualniHP, monstraDMG[vylosovaneMonstrum]);
+
+            vylosovaneMonstrum = losovac.VylosovatMonstrum();
+
+            Console.Clear();
+            Console.WriteLine("Pokračuješ dále.");
+            Thread.Sleep(1000);
+            Console.WriteLine("Nyní však narazíš na dvě monstra...");
+            Thread.Sleep(3000);
+            Console.WriteLine(monstraObrazek[vylosovaneMonstrum]);
+            Console.WriteLine(monstra[vylosovaneMonstrum] + ".");
+            Thread.Sleep(2000);
+            Console.WriteLine("Jsi připraven na svůj další boj?");
+            Console.WriteLine("\n[Stiskněte klávesu ENTER pro pokračování.]");
+            Console.ReadLine();
+            Console.Clear();
+            boj.BojujSMonstrem(2, utok[volbaPostavy - 1], ref monstraHP[vylosovaneMonstrum], ref monstraHP[vylosovaneMonstrum], ref vynechaniMonstra, postavy[volbaPostavy - 1], volbaPostavy, ref aktualniMana, ref aktualniHP, monstraDMG[vylosovaneMonstrum]);
+
+            Console.WriteLine("Po čase dorazíš do další vesnice.");
+            Thread.Sleep(1000);
+            do
             {
-                case 1:
-                    do
+                Console.WriteLine("\n[Možnosti vesnice:]");
+                Console.WriteLine("[-----------------]");
+                Console.WriteLine("[1 - Doplnit životy]");
+                Console.WriteLine("[2 - Vylepšit maximální životy]");
+                Console.WriteLine("[3 - Vylepšit maximální manu]");
+                Console.WriteLine("[4 - Vylepšit útok]");
+                Console.WriteLine("[5 - Opustit vesnici]");
+                do
+                {
+                    while (!int.TryParse(Console.ReadLine(), out vesniceVyber))
+                        Console.WriteLine("Neplatné zadání, zadejte číslo dle výběru: ");
+                    if (vesniceVyber < 1 || vesniceVyber > 4)
                     {
-                        Console.WriteLine("Doplnění životů vás bude stát 20 mincí a bude doplněno 10 HP. Chcete pokračovat? [A/N]");
-                        while (!char.TryParse(Console.ReadLine(), out potvrzeniVyberu))
-                            Console.WriteLine("Neplatné zadání, zadejte číslo dle výběru: ");
-                        if (potvrzeniVyberu == 'A' || potvrzeniVyberu == 'N' || potvrzeniVyberu == 'a' || potvrzeniVyberu == 'n')
-                        {
-                            spravneZadani = true;
-                        }
-                        else
-                        {
-                            Console.WriteLine("Zadejte písmeno A nebo N pro pokračování:");
-                            spravneZadani = false;
-                        }
-                    } while (spravneZadani == false);
-                    if (potvrzeniVyberu == 'N' || potvrzeniVyberu == 'n')
-                    {
-                        break;
+                        Console.WriteLine("Vyberte pouze čísla postav z nabídky: ");
+                        spravneZadani = false;
                     }
-                    vesnice.DoplnitZivoty(aktualniHP, postavyMaxHP, aktualniMince, volbaPostavy);
-                    break;
-            }
-            ***/
+                    else
+                    {
+                        spravneZadani = true;
+                    }
+                } while (spravneZadani == false);
+
+                znovu = true;
+
+                switch (vesniceVyber)
+                {
+                    case 1:
+                        do
+                        {
+                            Console.WriteLine("Doplnění životů vás bude stát 20 mincí a bude doplněno 10 HP. Chcete pokračovat? [A/N]");
+                            while (!char.TryParse(Console.ReadLine(), out potvrzeniVyberu))
+                                Console.WriteLine("Neplatné zadání, zadejte číslo dle výběru: ");
+                            if (potvrzeniVyberu == 'A' || potvrzeniVyberu == 'N' || potvrzeniVyberu == 'a' || potvrzeniVyberu == 'n')
+                            {
+                                spravneZadani = true;
+                            }
+                            else
+                            {
+                                Console.WriteLine("Zadejte písmeno A nebo N pro pokračování:");
+                                spravneZadani = false;
+                            }
+                        } while (spravneZadani == false);
+                        if (potvrzeniVyberu == 'N' || potvrzeniVyberu == 'n')
+                        {
+                            break;
+                        }
+                        vesnice.DoplnitZivoty(ref aktualniHP, postavyMaxHP, ref aktualniMince, volbaPostavy, ref znovu);
+                        break;
+                    case 2:
+                        do
+                        {
+                            Console.WriteLine("Vylepšení maximálních životů vás bude stát 20 mincí a bude vylepšeno o 5 HP. Chcete pokračovat? [A/N]");
+                            while (!char.TryParse(Console.ReadLine(), out potvrzeniVyberu))
+                                Console.WriteLine("Neplatné zadání, zadejte číslo dle výběru: ");
+                            if (potvrzeniVyberu == 'A' || potvrzeniVyberu == 'N' || potvrzeniVyberu == 'a' || potvrzeniVyberu == 'n')
+                            {
+                                spravneZadani = true;
+                            }
+                            else
+                            {
+                                Console.WriteLine("Zadejte písmeno A nebo N pro pokračování:");
+                                spravneZadani = false;
+                            }
+                        } while (spravneZadani == false);
+                        if (potvrzeniVyberu == 'N' || potvrzeniVyberu == 'n')
+                        {
+                            break;
+                        }
+                        vesnice.VylepsitZivoty(ref postavyMaxHP, ref aktualniMince, volbaPostavy, ref znovu);
+                        break;
+                    case 3:
+                        do
+                        {
+                            Console.WriteLine("Vylepšení maximální many vás bude stát 30 mincí a bude vylepšeno o 5. Chcete pokračovat? [A/N]");
+                            while (!char.TryParse(Console.ReadLine(), out potvrzeniVyberu))
+                                Console.WriteLine("Neplatné zadání, zadejte číslo dle výběru: ");
+                            if (potvrzeniVyberu == 'A' || potvrzeniVyberu == 'N' || potvrzeniVyberu == 'a' || potvrzeniVyberu == 'n')
+                            {
+                                spravneZadani = true;
+                            }
+                            else
+                            {
+                                Console.WriteLine("Zadejte písmeno A nebo N pro pokračování:");
+                                spravneZadani = false;
+                            }
+                        } while (spravneZadani == false);
+                        if (potvrzeniVyberu == 'N' || potvrzeniVyberu == 'n')
+                        {
+                            break;
+                        }
+                        vesnice.VylepsitManu(ref maxMana, ref aktualniHP, ref aktualniMince, volbaPostavy, ref znovu);
+                        break;
+                    case 4:
+                        do
+                        {
+                            Console.WriteLine("Vylepšení útoku vás bude stát 35 mincí a bude vylepšeno o 10 DMG. Chcete pokračovat? [A/N]");
+                            while (!char.TryParse(Console.ReadLine(), out potvrzeniVyberu))
+                                Console.WriteLine("Neplatné zadání, zadejte číslo dle výběru: ");
+                            if (potvrzeniVyberu == 'A' || potvrzeniVyberu == 'N' || potvrzeniVyberu == 'a' || potvrzeniVyberu == 'n')
+                            {
+                                spravneZadani = true;
+                            }
+                            else
+                            {
+                                Console.WriteLine("Zadejte písmeno A nebo N pro pokračování:");
+                                spravneZadani = false;
+                            }
+                        } while (spravneZadani == false);
+                        if (potvrzeniVyberu == 'N' || potvrzeniVyberu == 'n')
+                        {
+                            break;
+                        }
+                        vesnice.VylepsitUtok(ref utok, ref aktualniMince, volbaPostavy, ref znovu);
+                        break;
+                    case 5:
+                        znovu = false;
+                        break;
+                    default:
+                        znovu = true;
+                        break;
+                }
+            } while (znovu == true);
+
+            vylosovaneMonstrum = losovac.VylosovatMonstrum();
+
+            Console.Clear();
+            Console.WriteLine("Pokračuješ dále.");
+            Thread.Sleep(1000);
+            Console.WriteLine("Ne však na dlouho, brzy totiž narazíš na další monstrum...");
+            Thread.Sleep(3000);
+            Console.WriteLine(monstraObrazek[vylosovaneMonstrum]);
+            Console.WriteLine(monstra[vylosovaneMonstrum] + ".");
+            Thread.Sleep(2000);
+            Console.WriteLine("Jsi připraven na svůj další boj?");
+            Console.WriteLine("\n[Stiskněte klávesu ENTER pro pokračování.]");
+            Console.ReadLine();
+            Console.Clear();
+            boj.BojujSMonstrem(1, utok[volbaPostavy - 1], ref monstraHP[vylosovaneMonstrum], ref vynechaniMonstra, ref vynechaniMonstra, postavy[volbaPostavy - 1], volbaPostavy, ref aktualniMana, ref aktualniHP, monstraDMG[vylosovaneMonstrum]);
+
+            vylosovaneMonstrum = losovac.VylosovatMonstrum();
+
+            Console.Clear();
+            Console.WriteLine("Pokračuješ dále.");
+            Thread.Sleep(1000);
+            Console.WriteLine("Nyní však narazíš na dvě monstra...");
+            Thread.Sleep(3000);
+            Console.WriteLine(monstraObrazek[vylosovaneMonstrum]);
+            Console.WriteLine(monstra[vylosovaneMonstrum] + ".");
+            Thread.Sleep(2000);
+            Console.WriteLine("Jsi připraven na svůj další boj?");
+            Console.WriteLine("\n[Stiskněte klávesu ENTER pro pokračování.]");
+            Console.ReadLine();
+            Console.Clear();
+            boj.BojujSMonstrem(2, utok[volbaPostavy - 1], ref monstraHP[vylosovaneMonstrum], ref monstraHP[vylosovaneMonstrum], ref vynechaniMonstra, postavy[volbaPostavy - 1], volbaPostavy, ref aktualniMana, ref aktualniHP, monstraDMG[vylosovaneMonstrum]);
+
+            vylosovaneMonstrum = losovac.VylosovatMonstrum();
+
+            Console.Clear();
+            Console.WriteLine("Pokračuješ dále.");
+            Thread.Sleep(1000);
+            Console.WriteLine("Nyní však narazíš na dvě monstra...");
+            Thread.Sleep(3000);
+            Console.WriteLine(monstraObrazek[vylosovaneMonstrum]);
+            Console.WriteLine(monstra[vylosovaneMonstrum] + ".");
+            Thread.Sleep(2000);
+            Console.WriteLine("Jsi připraven na svůj další boj?");
+            Console.WriteLine("\n[Stiskněte klávesu ENTER pro pokračování.]");
+            Console.ReadLine();
+            Console.Clear();
+            boj.BojujSMonstrem(2, utok[volbaPostavy - 1], ref monstraHP[vylosovaneMonstrum], ref monstraHP[vylosovaneMonstrum], ref vynechaniMonstra, postavy[volbaPostavy - 1], volbaPostavy, ref aktualniMana, ref aktualniHP, monstraDMG[vylosovaneMonstrum]);
+
+            Console.WriteLine("Po čase dorazíš do další vesnice.");
+            Thread.Sleep(1000);
+            do
+            {
+                Console.WriteLine("\n[Možnosti vesnice:]");
+                Console.WriteLine("[-----------------]");
+                Console.WriteLine("[1 - Doplnit životy]");
+                Console.WriteLine("[2 - Vylepšit maximální životy]");
+                Console.WriteLine("[3 - Vylepšit maximální manu]");
+                Console.WriteLine("[4 - Vylepšit útok]");
+                Console.WriteLine("[5 - Opustit vesnici]");
+                do
+                {
+                    while (!int.TryParse(Console.ReadLine(), out vesniceVyber))
+                        Console.WriteLine("Neplatné zadání, zadejte číslo dle výběru: ");
+                    if (vesniceVyber < 1 || vesniceVyber > 4)
+                    {
+                        Console.WriteLine("Vyberte pouze čísla postav z nabídky: ");
+                        spravneZadani = false;
+                    }
+                    else
+                    {
+                        spravneZadani = true;
+                    }
+                } while (spravneZadani == false);
+
+                znovu = true;
+
+                switch (vesniceVyber)
+                {
+                    case 1:
+                        do
+                        {
+                            Console.WriteLine("Doplnění životů vás bude stát 20 mincí a bude doplněno 10 HP. Chcete pokračovat? [A/N]");
+                            while (!char.TryParse(Console.ReadLine(), out potvrzeniVyberu))
+                                Console.WriteLine("Neplatné zadání, zadejte číslo dle výběru: ");
+                            if (potvrzeniVyberu == 'A' || potvrzeniVyberu == 'N' || potvrzeniVyberu == 'a' || potvrzeniVyberu == 'n')
+                            {
+                                spravneZadani = true;
+                            }
+                            else
+                            {
+                                Console.WriteLine("Zadejte písmeno A nebo N pro pokračování:");
+                                spravneZadani = false;
+                            }
+                        } while (spravneZadani == false);
+                        if (potvrzeniVyberu == 'N' || potvrzeniVyberu == 'n')
+                        {
+                            break;
+                        }
+                        vesnice.DoplnitZivoty(ref aktualniHP, postavyMaxHP, ref aktualniMince, volbaPostavy, ref znovu);
+                        break;
+                    case 2:
+                        do
+                        {
+                            Console.WriteLine("Vylepšení maximálních životů vás bude stát 20 mincí a bude vylepšeno o 5 HP. Chcete pokračovat? [A/N]");
+                            while (!char.TryParse(Console.ReadLine(), out potvrzeniVyberu))
+                                Console.WriteLine("Neplatné zadání, zadejte číslo dle výběru: ");
+                            if (potvrzeniVyberu == 'A' || potvrzeniVyberu == 'N' || potvrzeniVyberu == 'a' || potvrzeniVyberu == 'n')
+                            {
+                                spravneZadani = true;
+                            }
+                            else
+                            {
+                                Console.WriteLine("Zadejte písmeno A nebo N pro pokračování:");
+                                spravneZadani = false;
+                            }
+                        } while (spravneZadani == false);
+                        if (potvrzeniVyberu == 'N' || potvrzeniVyberu == 'n')
+                        {
+                            break;
+                        }
+                        vesnice.VylepsitZivoty(ref postavyMaxHP, ref aktualniMince, volbaPostavy, ref znovu);
+                        break;
+                    case 3:
+                        do
+                        {
+                            Console.WriteLine("Vylepšení maximální many vás bude stát 30 mincí a bude vylepšeno o 5. Chcete pokračovat? [A/N]");
+                            while (!char.TryParse(Console.ReadLine(), out potvrzeniVyberu))
+                                Console.WriteLine("Neplatné zadání, zadejte číslo dle výběru: ");
+                            if (potvrzeniVyberu == 'A' || potvrzeniVyberu == 'N' || potvrzeniVyberu == 'a' || potvrzeniVyberu == 'n')
+                            {
+                                spravneZadani = true;
+                            }
+                            else
+                            {
+                                Console.WriteLine("Zadejte písmeno A nebo N pro pokračování:");
+                                spravneZadani = false;
+                            }
+                        } while (spravneZadani == false);
+                        if (potvrzeniVyberu == 'N' || potvrzeniVyberu == 'n')
+                        {
+                            break;
+                        }
+                        vesnice.VylepsitManu(ref maxMana, ref aktualniHP, ref aktualniMince, volbaPostavy, ref znovu);
+                        break;
+                    case 4:
+                        do
+                        {
+                            Console.WriteLine("Vylepšení útoku vás bude stát 35 mincí a bude vylepšeno o 10 DMG. Chcete pokračovat? [A/N]");
+                            while (!char.TryParse(Console.ReadLine(), out potvrzeniVyberu))
+                                Console.WriteLine("Neplatné zadání, zadejte číslo dle výběru: ");
+                            if (potvrzeniVyberu == 'A' || potvrzeniVyberu == 'N' || potvrzeniVyberu == 'a' || potvrzeniVyberu == 'n')
+                            {
+                                spravneZadani = true;
+                            }
+                            else
+                            {
+                                Console.WriteLine("Zadejte písmeno A nebo N pro pokračování:");
+                                spravneZadani = false;
+                            }
+                        } while (spravneZadani == false);
+                        if (potvrzeniVyberu == 'N' || potvrzeniVyberu == 'n')
+                        {
+                            break;
+                        }
+                        vesnice.VylepsitUtok(ref utok, ref aktualniMince, volbaPostavy, ref znovu);
+                        break;
+                    case 5:
+                        znovu = false;
+                        break;
+                    default:
+                        znovu = true;
+                        break;
+                }
+            } while (znovu == true);
+
+
+            vylosovaneMonstrum = losovac.VylosovatMonstrum();
+
+            Console.Clear();
+            Console.WriteLine("Pokračuješ dále.");
+            Thread.Sleep(1000);
+            Console.WriteLine("Nyní však narazíš na dvě monstra...");
+            Thread.Sleep(3000);
+            Console.WriteLine(monstraObrazek[vylosovaneMonstrum]);
+            Console.WriteLine(monstra[vylosovaneMonstrum] + ".");
+            Thread.Sleep(2000);
+            Console.WriteLine("Jsi připraven na svůj další boj?");
+            Console.WriteLine("\n[Stiskněte klávesu ENTER pro pokračování.]");
+            Console.ReadLine();
+            Console.Clear();
+            boj.BojujSMonstrem(2, utok[volbaPostavy - 1], ref monstraHP[vylosovaneMonstrum], ref monstraHP[vylosovaneMonstrum], ref vynechaniMonstra, postavy[volbaPostavy - 1], volbaPostavy, ref aktualniMana, ref aktualniHP, monstraDMG[vylosovaneMonstrum]);
+
+            Console.Clear();
+            Console.WriteLine("Pokračuješ dále.");
+            Thread.Sleep(1000);
+            Console.WriteLine("Nyní však narazíš na dvě monstra...");
+            Thread.Sleep(3000);
+            Console.WriteLine(monstraObrazek[vylosovaneMonstrum]);
+            Console.WriteLine(monstra[vylosovaneMonstrum] + ".");
+            Thread.Sleep(2000);
+            Console.WriteLine("Jsi připraven na svůj další boj?");
+            Console.WriteLine("\n[Stiskněte klávesu ENTER pro pokračování.]");
+            Console.ReadLine();
+            Console.Clear();
+            boj.BojujSMonstrem(2, utok[volbaPostavy - 1], ref monstraHP[vylosovaneMonstrum], ref monstraHP[vylosovaneMonstrum], ref vynechaniMonstra, postavy[volbaPostavy - 1], volbaPostavy, ref aktualniMana, ref aktualniHP, monstraDMG[vylosovaneMonstrum]);
+
+            vylosovaneMonstrum = losovac.VylosovatMonstrum();
+
+            Console.Clear();
+            Console.WriteLine("Pokračuješ dále.");
+            Thread.Sleep(1000);
+            Console.WriteLine("Zde jsi však narazil na shluk 3 monster......");
+            Thread.Sleep(3000);
+            Console.WriteLine(monstraObrazek[vylosovaneMonstrum]);
+            Console.WriteLine(monstra[vylosovaneMonstrum] + ".");
+            Thread.Sleep(2000);
+            Console.WriteLine("Jsi připraven na svůj další náročný boj?");
+            Console.WriteLine("\n[Stiskněte klávesu ENTER pro pokračování.]");
+            Console.ReadLine();
+            Console.Clear();
+            boj.BojujSMonstrem(3, utok[volbaPostavy - 1], ref monstraHP[vylosovaneMonstrum], ref monstraHP[vylosovaneMonstrum], ref monstraHP[vylosovaneMonstrum], postavy[volbaPostavy - 1], volbaPostavy, ref aktualniMana, ref aktualniHP, monstraDMG[vylosovaneMonstrum]);
+
+            Console.WriteLine("Po čase dorazíš do další vesnice, tentokrát poslední.");
+            Thread.Sleep(1000);
+            do
+            {
+                Console.WriteLine("\n[Možnosti vesnice:]");
+                Console.WriteLine("[-----------------]");
+                Console.WriteLine("[1 - Doplnit životy]");
+                Console.WriteLine("[2 - Vylepšit maximální životy]");
+                Console.WriteLine("[3 - Vylepšit maximální manu]");
+                Console.WriteLine("[4 - Vylepšit útok]");
+                Console.WriteLine("[5 - Opustit vesnici]");
+                do
+                {
+                    while (!int.TryParse(Console.ReadLine(), out vesniceVyber))
+                        Console.WriteLine("Neplatné zadání, zadejte číslo dle výběru: ");
+                    if (vesniceVyber < 1 || vesniceVyber > 4)
+                    {
+                        Console.WriteLine("Vyberte pouze čísla postav z nabídky: ");
+                        spravneZadani = false;
+                    }
+                    else
+                    {
+                        spravneZadani = true;
+                    }
+                } while (spravneZadani == false);
+
+                znovu = true;
+
+                switch (vesniceVyber)
+                {
+                    case 1:
+                        do
+                        {
+                            Console.WriteLine("Doplnění životů vás bude stát 20 mincí a bude doplněno 10 HP. Chcete pokračovat? [A/N]");
+                            while (!char.TryParse(Console.ReadLine(), out potvrzeniVyberu))
+                                Console.WriteLine("Neplatné zadání, zadejte číslo dle výběru: ");
+                            if (potvrzeniVyberu == 'A' || potvrzeniVyberu == 'N' || potvrzeniVyberu == 'a' || potvrzeniVyberu == 'n')
+                            {
+                                spravneZadani = true;
+                            }
+                            else
+                            {
+                                Console.WriteLine("Zadejte písmeno A nebo N pro pokračování:");
+                                spravneZadani = false;
+                            }
+                        } while (spravneZadani == false);
+                        if (potvrzeniVyberu == 'N' || potvrzeniVyberu == 'n')
+                        {
+                            break;
+                        }
+                        vesnice.DoplnitZivoty(ref aktualniHP, postavyMaxHP, ref aktualniMince, volbaPostavy, ref znovu);
+                        break;
+                    case 2:
+                        do
+                        {
+                            Console.WriteLine("Vylepšení maximálních životů vás bude stát 20 mincí a bude vylepšeno o 5 HP. Chcete pokračovat? [A/N]");
+                            while (!char.TryParse(Console.ReadLine(), out potvrzeniVyberu))
+                                Console.WriteLine("Neplatné zadání, zadejte číslo dle výběru: ");
+                            if (potvrzeniVyberu == 'A' || potvrzeniVyberu == 'N' || potvrzeniVyberu == 'a' || potvrzeniVyberu == 'n')
+                            {
+                                spravneZadani = true;
+                            }
+                            else
+                            {
+                                Console.WriteLine("Zadejte písmeno A nebo N pro pokračování:");
+                                spravneZadani = false;
+                            }
+                        } while (spravneZadani == false);
+                        if (potvrzeniVyberu == 'N' || potvrzeniVyberu == 'n')
+                        {
+                            break;
+                        }
+                        vesnice.VylepsitZivoty(ref postavyMaxHP, ref aktualniMince, volbaPostavy, ref znovu);
+                        break;
+                    case 3:
+                        do
+                        {
+                            Console.WriteLine("Vylepšení maximální many vás bude stát 30 mincí a bude vylepšeno o 5. Chcete pokračovat? [A/N]");
+                            while (!char.TryParse(Console.ReadLine(), out potvrzeniVyberu))
+                                Console.WriteLine("Neplatné zadání, zadejte číslo dle výběru: ");
+                            if (potvrzeniVyberu == 'A' || potvrzeniVyberu == 'N' || potvrzeniVyberu == 'a' || potvrzeniVyberu == 'n')
+                            {
+                                spravneZadani = true;
+                            }
+                            else
+                            {
+                                Console.WriteLine("Zadejte písmeno A nebo N pro pokračování:");
+                                spravneZadani = false;
+                            }
+                        } while (spravneZadani == false);
+                        if (potvrzeniVyberu == 'N' || potvrzeniVyberu == 'n')
+                        {
+                            break;
+                        }
+                        vesnice.VylepsitManu(ref maxMana, ref aktualniHP, ref aktualniMince, volbaPostavy, ref znovu);
+                        break;
+                    case 4:
+                        do
+                        {
+                            Console.WriteLine("Vylepšení útoku vás bude stát 35 mincí a bude vylepšeno o 10 DMG. Chcete pokračovat? [A/N]");
+                            while (!char.TryParse(Console.ReadLine(), out potvrzeniVyberu))
+                                Console.WriteLine("Neplatné zadání, zadejte číslo dle výběru: ");
+                            if (potvrzeniVyberu == 'A' || potvrzeniVyberu == 'N' || potvrzeniVyberu == 'a' || potvrzeniVyberu == 'n')
+                            {
+                                spravneZadani = true;
+                            }
+                            else
+                            {
+                                Console.WriteLine("Zadejte písmeno A nebo N pro pokračování:");
+                                spravneZadani = false;
+                            }
+                        } while (spravneZadani == false);
+                        if (potvrzeniVyberu == 'N' || potvrzeniVyberu == 'n')
+                        {
+                            break;
+                        }
+                        vesnice.VylepsitUtok(ref utok, ref aktualniMince, volbaPostavy, ref znovu);
+                        break;
+                    case 5:
+                        znovu = false;
+                        break;
+                    default:
+                        znovu = true;
+                        break;
+                }
+            } while (znovu == true);
+
+            boj.BojujSBossem(aktualniUtok, bossHP, postavy[volbaPostavy - 1], boss, volbaPostavy, aktualniMana, ref aktualniHP, bossDMG);
         }
     }
 }
